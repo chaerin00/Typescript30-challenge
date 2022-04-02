@@ -1,5 +1,6 @@
-const removeTransition = e => {
-  e.target.classList.remove("playing");
+const removeTransition = (e: MouseEvent) => {
+  const target = e.target as HTMLDivElement;
+  target.classList.remove("playing");
 };
 
 const playSound = (e: MouseEvent) => {

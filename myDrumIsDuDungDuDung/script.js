@@ -1,5 +1,6 @@
-const removeTransition = e => {
-    e.target.classList.remove("playing");
+const removeTransition = (e) => {
+    const target = e.target;
+    target.classList.remove("playing");
 };
 const playSound = (e) => {
     const target = e.currentTarget;
