@@ -1,9 +1,22 @@
 const secondHand = document.querySelector(".second-hand");
 const minsHand = document.querySelector(".min-hand");
 const hourHand = document.querySelector(".hour-hand");
-const initialDate = new Date();
-let seconds = initialDate.getSeconds();
-function setDate() {
+const city = document.querySelector(".city");
+const weatherStatus = document.querySelector(".status");
+const getWeather = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+        const { latitude, longitude } = position.coords;
+        console.log(latitude, longitude);
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=351d5e96c2167ecb571357e8e67eaf73`)
+            .then(res => res.json())
+            .then((res) => {
+            console.log(res.name, res.weather[0].main);
+            city.innerText = res.name;
+            weatherStatus.innerText = res.weather[0].main;
+        });
+    });
+};
+const setDate = () => {
     const now = new Date();
     seconds++;
     const secondsDegrees = (seconds / 60) * 360 + 90;
@@ -14,6 +27,9 @@ function setDate() {
     const hour = now.getHours();
     const hourDegrees = (hour / 12) * 360 + (mins / 60) * 30 + 90;
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
-}
+};
 setInterval(setDate, 1000);
+const initialDate = new Date();
+let seconds = initialDate.getSeconds();
 setDate();
+getWeather();

@@ -6,6 +6,12 @@
     <script defer src="./script.js"></script>
   </head>
   <body>
+    <div class="weather">
+      <div>
+        The weather in <span class="city">...</span> is
+        <span class="status">...</span>
+      </div>
+    </div>
     <div class="clock">
       <div class="clock-face">
         <div class="hand hour-hand"></div>
@@ -16,7 +22,7 @@
 
     <style>
       html {
-        background: #018ded url(https://unsplash.it/1500/1000?image=881&blur=5);
+        background: #018ded;
         background-size: cover;
         font-family: "helvetica neue";
         text-align: center;
@@ -27,9 +33,28 @@
         margin: 0;
         font-size: 2rem;
         display: flex;
+        flex-direction: column;
+        justify-content: center;
         flex: 1;
         min-height: 100vh;
         align-items: center;
+      }
+
+      .weather {
+        font-size: 2.5rem;
+        color: white;
+      }
+
+      .city {
+        font-size: 3rem;
+        font-weight: 700;
+        color: salmon;
+      }
+
+      .status {
+        font-size: 3rem;
+        font-weight: 700;
+        color: salmon;
       }
 
       .clock {
@@ -56,6 +81,7 @@
         height: 6px;
         background: black;
         position: absolute;
+        border-radius: 3px;
         top: 50%;
         transform-origin: 100%;
         transition: all 0.05s;
@@ -63,16 +89,13 @@
       }
 
       .hour-hand {
-        margin-right: 2rem;
-        /* width: 30%; */
-      }
-
-      .min-hand {
-        /* width: 40%; */
+        width: 35%;
+        left: 15%;
       }
 
       .second-hand {
-        /* width: 50%; */
+        height: 3px;
+        background-color: salmon;
       }
     </style>
   </body>
