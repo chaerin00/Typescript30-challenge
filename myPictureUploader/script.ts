@@ -10,9 +10,10 @@ const handleUpdate = (e: MouseEvent) => {
 
 const uploadImage = (e: MouseEvent) => {
   const target = e.target as HTMLInputElement;
-  console.log(target.files);
-  const url = URL.createObjectURL(target.files[0]);
-  console.log(url);
+  image.src = URL.createObjectURL(target.files[0]);
+  image.onload = () => {
+    URL.revokeObjectURL(image.src);
+  };
 };
 
 inputs.forEach(input => {

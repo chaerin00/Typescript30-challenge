@@ -8,9 +8,12 @@ const handleUpdate = (e) => {
 };
 const uploadImage = (e) => {
     const target = e.target;
-    console.log(target.files);
     const url = URL.createObjectURL(target.files[0]);
+    image.src = url;
     console.log(url);
+    image.onload = () => {
+        URL.revokeObjectURL(image.src);
+    };
 };
 inputs.forEach(input => {
     input.addEventListener("change", handleUpdate);
