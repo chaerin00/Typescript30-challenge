@@ -32,19 +32,13 @@
         --blur: 10px;
       }
 
-      img {
-        padding: var(--spacing);
-        background: var(--base);
-        filter: blur(var(--blur));
-      }
-
       .hl {
         color: var(--base);
       }
 
       /*
-      misc styles, nothing to do with CSS variables
-    */
+        misc styles, nothing to do with CSS variables
+      */
 
       body {
         text-align: center;
@@ -67,16 +61,42 @@
         position: relative;
         width: 18.75rem;
         height: 18.75rem;
+        margin: auto;
       }
 
       .album label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: absolute;
+        top: 0;
+        right: 0;
         width: 18.75rem;
         height: 18.75rem;
+        z-index: 1;
+        font-size: 4rem;
+        font-weight: 400;
+      }
+
+      .album label:hover {
+        background-color: rgba(0, 0, 0, 0.3);
       }
 
       .album input {
-        width: 0;
+        visibility: hidden;
+      }
+
+      .album img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 18.75rem;
+        height: 18.75rem;
+        padding: var(--spacing);
+        background: var(--base);
+        filter: blur(var(--blur));
+        object-fit: cover;
+        box-sizing: border-box;
       }
     </style>
   </body>
