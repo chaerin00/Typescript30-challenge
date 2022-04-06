@@ -6,11 +6,9 @@ const weatherStatus = document.querySelector(".status");
 const getWeather = () => {
     navigator.geolocation.getCurrentPosition(position => {
         const { latitude, longitude } = position.coords;
-        console.log(latitude, longitude);
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=351d5e96c2167ecb571357e8e67eaf73`)
             .then(res => res.json())
             .then((res) => {
-            console.log(res.name, res.weather[0].main);
             city.innerText = res.name;
             weatherStatus.innerText = res.weather[0].main;
         });
